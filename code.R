@@ -112,6 +112,6 @@ ggsave("romney-paul-histogram.png")
 ## plot santorum - paul
 p<- ggplot(shp.df) + aes(long,lat,group=group,fill=pct.santorum - pct.paul) + geom_polygon() + 
                   geom_path(color="white") + coord_equal() + scale_fill_continuous(limits=c(-60,60),name="Santorum - Paul") + theme_map() 
-ggsave("romney-paul.png")
-p<-qplot(pct.romney - pct.paul,data=iagop,geom="histogram",main="Santorum - Paul Percentage by County IAGOP Caucus 2012") + geom_vline(x=0)
+ggsave("santorum-paul.png")
+p<-qplot(pct.santorum - pct.paul,data=iagop,geom="histogram",main="Santorum - Paul Percentage by County IAGOP Caucus 2012") + geom_vline(x=0)
 ggsave("santorum-paul-histogram.png")
