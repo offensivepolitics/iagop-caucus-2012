@@ -21,8 +21,7 @@ theme_map = function(size=12)
              legend.key.size=unit(1.2, "lines"),
              legend.position="right",
              legend.text=theme_text(size=size*0.8),
-             legend.title=theme_text(size=size*0.8, face="bold",
-hjust=0),
+             legend.title=theme_text(size=size*0.8, face="bold",hjust=0),
              panel.background=theme_blank(),
              panel.border=theme_blank(),
              panel.grid.major=theme_blank(),
@@ -31,8 +30,7 @@ hjust=0),
              plot.background=theme_blank(),
              plot.margin=unit(c(1, 1, 0.5, 0.5), "lines"),
              plot.title=theme_text(size=size*1.2),
-             strip.background=theme_rect(fill="grey90",
-colour="grey50"),
+             strip.background=theme_rect(fill="grey90",colour="grey50"),
              strip.text.x=theme_text(size=size*0.8),
              strip.text.y=theme_text(size=size*0.8, angle=-90))
 
@@ -74,52 +72,46 @@ shp.df <- shp.df[,-c(13,14,15,16,17,18,19,20,21,22,23)]
 
 # plot a heatmap of each candidates vote percentage
 p<-ggplot(shp.df) + aes(long,lat,group=group,fill=pct.paul) + geom_polygon() + 
-                 geom_path(color="white") + coord_equal() + scale_fill_gradient(limits=c(0,100),low="white",high="red") + 
-		 theme_map()
+                 geom_path(color="white") + coord_equal() + scale_fill_gradient(limits=c(0,100),low="white",high="red") + theme_map()
 ggsave("paul.png")
 
 p<-ggplot(shp.df) + aes(long,lat,group=group,fill=pct.romney) + geom_polygon() + 
-                 geom_path(color="white") + coord_equal() + scale_fill_gradient(limits=c(0,100),low="white",high="red") + 
-		 theme_map()
+                 geom_path(color="white") + coord_equal() + scale_fill_gradient(limits=c(0,100),low="white",high="red") + theme_map()
 ggsave("romney.png")
 
 p<-ggplot(shp.df) + aes(long,lat,group=group,fill=pct.santorum) + geom_polygon() + 
-                 geom_path(color="white") + coord_equal() + scale_fill_gradient(limits=c(0,100),low="white",high="red") + 
-		 theme_map()
+                 geom_path(color="white") + coord_equal() + scale_fill_gradient(limits=c(0,100),low="white",high="red") + theme_map()
 ggsave("santorum.png")
 
 p<-ggplot(shp.df) + aes(long,lat,group=group,fill=pct.gingrich) + geom_polygon() + 
-                 geom_path(color="white") + coord_equal() + scale_fill_gradient(limits=c(0,100),low="white",high="red") + 
-		 theme_map()
+                 geom_path(color="white") + coord_equal() + scale_fill_gradient(limits=c(0,100),low="white",high="red") + theme_map()
 ggsave("gingrich.png")
 
 p<-ggplot(shp.df) + aes(long,lat,group=group,fill=pct.perry) + geom_polygon() + 
-                 geom_path(color="white") + coord_equal() + scale_fill_gradient(limits=c(0,100),low="white",high="red") + 
-		 theme_map()
+                 geom_path(color="white") + coord_equal() + scale_fill_gradient(limits=c(0,100),low="white",high="red") + theme_map()
 ggsave("perry.png")
 
 p<-ggplot(shp.df) + aes(long,lat,group=group,fill=pct.bachmann) + geom_polygon() + 
-                 geom_path(color="white") + coord_equal() + scale_fill_gradient(limits=c(0,100),low="white",high="red") + 
-		 theme_map()
+                 geom_path(color="white") + coord_equal() + scale_fill_gradient(limits=c(0,100),low="white",high="red") + theme_map()
 ggsave("bachmann.png")
 
 ## plot romney - santorum 
 p<- ggplot(shp.df) + aes(long,lat,group=group,fill=pct.romney-pct.santorum) + geom_polygon() + 
-                  geom_path(color="white") + coord_equal() + scale_fill_continuous(limits=c(-60,60),name="Romney - Santorum") + theme_map() opts(main="Romney minus Santorum IA GOP Caucus 2012")
+                  geom_path(color="white") + coord_equal() + scale_fill_continuous(limits=c(-60,60),name="Romney - Santorum") + theme_map()
 ggsave("romney-santorum.png")
 p<-qplot(pct.romney - pct.santorum,data=iagop,geom="histogram",main="Romney - Santorum Percentage by County IAGOP Caucus 2012") + geom_vline(x=0)
-p<-ggsave("romney-santorum-histogram.png")
+ggsave("romney-santorum-histogram.png")
 
 ## plot romney - paul
 p<- ggplot(shp.df) + aes(long,lat,group=group,fill=pct.romney-pct.paul) + geom_polygon() + 
-                  geom_path(color="white") + coord_equal() + scale_fill_continuous(limits=c(-60,60),name="Romney - Paul") + theme_map() + opts(main="Romney minus Paul IA GOP Caucus 2012")
+                  geom_path(color="white") + coord_equal() + scale_fill_continuous(limits=c(-60,60),name="Romney - Paul") + theme_map()
 ggsave("romney-paul.png")
 p<-qplot(pct.romney - pct.paul,data=iagop,geom="histogram",main="Romney - Paul Percentage by County IAGOP Caucus 2012") + geom_vline(x=0)
 ggsave("romney-paul-histogram.png")
 
 ## plot santorum - paul
 p<- ggplot(shp.df) + aes(long,lat,group=group,fill=pct.santorum - pct.paul) + geom_polygon() + 
-                  geom_path(color="white") + coord_equal() + scale_fill_continuous(limits=c(-60,60),name="Santorum - Paul") + theme_map() + opts(main="Santorum minus Paul IA GOP Caucus 2012")
+                  geom_path(color="white") + coord_equal() + scale_fill_continuous(limits=c(-60,60),name="Santorum - Paul") + theme_map() 
 ggsave("romney-paul.png")
 p<-qplot(pct.romney - pct.paul,data=iagop,geom="histogram",main="Santorum - Paul Percentage by County IAGOP Caucus 2012") + geom_vline(x=0)
-p<-ggsave("santorum-paul-histogram.png")
+ggsave("santorum-paul-histogram.png")
